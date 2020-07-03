@@ -1,4 +1,4 @@
-package com.example.pekomon.newsapp
+package com.example.pekomon.newsapp.data.model
 
 data class Source(
     val id: String,

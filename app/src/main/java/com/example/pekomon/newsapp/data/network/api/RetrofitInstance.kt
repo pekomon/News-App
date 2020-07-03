@@ -1,4 +1,4 @@
-package com.example.pekomon.newsapp.api
+package com.example.pekomon.newsapp.data.network.api
 
 import com.example.pekomon.newsapp.util.Consts.BASE_URL
 import okhttp3.OkHttpClient

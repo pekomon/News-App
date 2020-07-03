@@ -1,7 +1,7 @@
-package com.example.pekomon.newsapp.api
+package com.example.pekomon.newsapp.data.network.api
 
 import com.example.pekomon.newsapp.BuildConfig
-import com.example.pekomon.newsapp.NewsResponse
+import com.example.pekomon.newsapp.data.model.NewsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
