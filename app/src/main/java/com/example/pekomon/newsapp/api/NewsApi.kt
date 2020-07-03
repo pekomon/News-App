@@ -1,7 +1,7 @@
 package com.example.pekomon.newsapp.api
 
+import com.example.pekomon.newsapp.BuildConfig
 import com.example.pekomon.newsapp.NewsResponse
-import com.example.pekomon.newsapp.util.Consts.APIKEY
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -15,7 +15,7 @@ interface NewsApi {
         @Query("page")
         pageNumber: Int = 1,
         @Query("apikey")
-        apikey: String = APIKEY
+        apikey: String = BuildConfig.APIKEY
     ): Response<NewsResponse>
 
     @GET("v2/everything")
@@ -25,6 +25,6 @@ interface NewsApi {
         @Query("page")
         pageNumber: Int = 1,
         @Query("apikey")
-        apikey: String = APIKEY
+        apikey: String = BuildConfig.APIKEY
     ): Response<NewsResponse>
 }
