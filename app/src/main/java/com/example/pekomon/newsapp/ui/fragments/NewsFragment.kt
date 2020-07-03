@@ -9,8 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.pekomon.newsapp.R
+import com.example.pekomon.newsapp.ui.MainActivity
+import com.example.pekomon.newsapp.ui.NewsViewModel
 
 class NewsFragment : Fragment() {
+
+    lateinit var viewModel: NewsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,5 +24,10 @@ class NewsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_news, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = (activity as MainActivity).viewModel
+    }
 
 }
