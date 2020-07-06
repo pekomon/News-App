@@ -6,4 +6,5 @@
     <string name="breaking_news_title">Breaking news</string>
     <string name="saved_news_title">Saved news</string>
     <string name="search_news_title">Search news</string>
+    <string name="search_page_hint_search">Search...</string>
 </resources>
