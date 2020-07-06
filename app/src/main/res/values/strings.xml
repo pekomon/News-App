@@ -8,4 +8,7 @@
     <string name="search_news_title">Search news</string>
     <string name="search_page_hint_search">Search...</string>
     <string name="article_fragment_app_name_title">News App</string>
+    <string name="article_saved">Article saved</string>
+    <string name="saved_news_article_deleted">Article deleted</string>
+    <string name="saved_news_undo">Undo</string>
 </resources>

@@ -5,13 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import com.example.pekomon.newsapp.R
 import com.example.pekomon.newsapp.ui.MainActivity
 import com.example.pekomon.newsapp.ui.NewsViewModel
 import com.example.pekomon.newsapp.ui.adapters.NewsAdapter
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_saved_news.*
 
 class SavedNewsFragment : Fragment() {
@@ -34,6 +38,38 @@ class SavedNewsFragment : Fragment() {
 
         setupRecyclerView()
         setupClickListener()
+        setupObservers()
+
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                // No actions here
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val article = newsAdapter.differ.currentList[position]
+                viewModel.deleteArticle(article)
+                Snackbar.make(view, getString(R.string.saved_news_article_deleted), Snackbar.LENGTH_SHORT).apply {
+                    setAction(getString(R.string.saved_news_undo)){
+                        viewModel.saveArticle(article)
+                    }
+                    show()
+                }
+            }
+        }
+
+        ItemTouchHelper(itemTouchHelperCallback).apply {
+            attachToRecyclerView(savedNewsRecyclerView)
+        }
+
     }
 
     private fun setupRecyclerView() {
@@ -51,5 +87,12 @@ class SavedNewsFragment : Fragment() {
             }
             findNavController().navigate(R.id.action_savedNewsFragment_to_articleFragment, bundle)
         }
+    }
+
+    private fun setupObservers() {
+
+        viewModel.getSavedNews().observe(viewLifecycleOwner, Observer {articles ->
+            newsAdapter.differ.submitList(articles)
+        })
     }
 }

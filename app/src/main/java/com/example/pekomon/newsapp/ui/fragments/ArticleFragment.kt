@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.pekomon.newsapp.R
 import com.example.pekomon.newsapp.ui.MainActivity
 import com.example.pekomon.newsapp.ui.NewsViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_article.*
 
 
@@ -35,6 +36,11 @@ class ArticleFragment : Fragment() {
         webView.apply {
             webViewClient = WebViewClient()
             loadUrl(article.url)
+        }
+
+        fab.setOnClickListener {
+            viewModel.saveArticle(article)
+            Snackbar.make(view, getString(R.string.article_saved), Snackbar.LENGTH_SHORT).show()
         }
     }
 }

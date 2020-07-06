@@ -3,6 +3,7 @@ package com.example.pekomon.newsapp.ui
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pekomon.newsapp.data.model.Article
 import com.example.pekomon.newsapp.data.model.NewsResponse
 import com.example.pekomon.newsapp.data.repository.NewsRepository
 import com.example.pekomon.newsapp.util.Resource
@@ -52,4 +53,13 @@ class NewsViewModel(
         return Resource.Error(response.message())
     }
 
+    fun saveArticle(article: Article) = viewModelScope.launch {
+        newsRepository.upsertArticle(article)
+    }
+
+    fun getSavedNews() = newsRepository.getSavedNews()
+
+    fun deleteArticle(article: Article) = viewModelScope.launch {
+        newsRepository.deleteArticle(article)
+    }
 }
