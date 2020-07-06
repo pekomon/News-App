@@ -32,7 +32,8 @@ class MainActivity : AppCompatActivity() {
             R.id.newsFragment, R.id.savedNewsFragment, R.id.searchFragment
         ))
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        // Hide this action bar temporarily now
+        //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 }
