@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.example.pekomon.newsapp.ui.fragments.NewsFragment"
-        android:label="fragment_news"
+        android:label="@string/breaking_news_title"
         tools:layout="@layout/fragment_news" >
         <action
             android:id="@+id/action_newsFragment_to_articleFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/savedNewsFragment"
         android:name="com.example.pekomon.newsapp.ui.fragments.SavedNewsFragment"
-        android:label="fragment_saved_news"
+        android:label="@string/saved_news_title"
         tools:layout="@layout/fragment_saved_news" >
         <action
             android:id="@+id/action_savedNewsFragment_to_articleFragment"
@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.pekomon.newsapp.ui.fragments.SearchFragment"
-        android:label="fragment_search"
+        android:label="@string/search_news_title"
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_articleFragment"
