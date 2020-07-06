@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.pekomon.newsapp.R
@@ -38,7 +39,7 @@ class NewsFragment : Fragment() {
 
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
-
+        setupClickListener()
         setupObserver()
     }
 
@@ -70,6 +71,15 @@ class NewsFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun setupClickListener() {
+        newsAdapter.setClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(R.id.action_newsFragment_to_articleFragment, bundle)
+        }
     }
 
     private fun showProgressbar(show: Boolean) {

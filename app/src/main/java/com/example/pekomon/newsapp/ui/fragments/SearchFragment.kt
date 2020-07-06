@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.pekomon.newsapp.R
@@ -42,6 +43,7 @@ class SearchFragment : Fragment() {
         viewModel = (activity as MainActivity).viewModel
 
         setupRecyclerView()
+        setupClickListener()
         setupObserver()
 
         var job: Job? = null
@@ -86,6 +88,15 @@ class SearchFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun setupClickListener() {
+        newsAdapter.setClickListener { article ->
+            val bundle = Bundle().apply {
+                putSerializable("article", article)
+            }
+            findNavController().navigate(R.id.action_searchFragment_to_articleFragment, bundle)
+        }
     }
 
     private fun showProgressbar(show: Boolean) {

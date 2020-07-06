@@ -7,4 +7,5 @@
     <string name="saved_news_title">Saved news</string>
     <string name="search_news_title">Search news</string>
     <string name="search_page_hint_search">Search...</string>
+    <string name="article_fragment_app_name_title">News App</string>
 </resources>
