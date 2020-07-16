@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -126,6 +127,7 @@ class SearchFragment : Fragment() {
                     showProgressbar(false)
                     response.message?.let { msg ->
                         Log.e(TAG, "Failed: $msg")
+                        Toast.makeText(activity, "Failed: $msg", Toast.LENGTH_SHORT).show()
                     }
                 }
                 is Resource.Loading -> {
